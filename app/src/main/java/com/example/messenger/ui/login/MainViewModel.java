@@ -38,7 +38,7 @@ public class MainViewModel extends ViewModel {
         auth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                //firebaseUser.setValue(authResult.getUser());
+                //   firebaseUser.setValue(authResult.getUser());
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
