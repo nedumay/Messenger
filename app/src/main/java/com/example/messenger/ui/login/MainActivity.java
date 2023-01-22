@@ -7,6 +7,7 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -100,4 +101,9 @@ public class MainActivity extends AppCompatActivity {
         editTextPassword = findViewById(R.id.editTextPassword);
         loginButton = findViewById(R.id.buttonLogin);
     }
+
+    public static Intent newIntent(Context context){
+        return new Intent(context, MainActivity.class);
+    }
+
 }

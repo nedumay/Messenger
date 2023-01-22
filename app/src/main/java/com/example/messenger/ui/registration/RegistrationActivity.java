@@ -2,6 +2,8 @@ package com.example.messenger.ui.registration;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +11,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.messenger.R;
+import com.example.messenger.ui.users.UsersActivity;
+import com.google.firebase.auth.FirebaseUser;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -21,12 +26,16 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText editTextAge;
     private Button buttonSingUp;
 
+    private RegistrationViewModel registrationViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
         initView();
+        registrationViewModel = new ViewModelProvider(this).get(RegistrationViewModel.class);
+        observeViewModel();
         buttonSingUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,8 +43,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 String password = editTextPassword.getText().toString().trim();
                 String name = editTextName.getText().toString().trim();
                 String lastName = editTextLastName.getText().toString().trim();
-                String age = editTextAge.getText().toString().trim();
-                // Sing Up
+                int age = Integer.parseInt(editTextAge.getText().toString().trim());
+                registrationViewModel.singUp(email,password,name,lastName,age);
             }
         });
 
@@ -48,6 +57,31 @@ public class RegistrationActivity extends AppCompatActivity {
         editTextLastName = findViewById(R.id.editTextLastName);
         editTextAge = findViewById(R.id.editTextAge);
         buttonSingUp = findViewById(R.id.buttonSingUp);
+    }
+
+    private void observeViewModel(){
+        registrationViewModel.getError().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String errorMassage) {
+                if(errorMassage != null){
+                    Toast.makeText(
+                            RegistrationActivity.this,
+                            errorMassage,
+                            Toast.LENGTH_SHORT
+                    ).show();
+                }
+            }
+        });
+        registrationViewModel.getFirebaseUser().observe(this, new Observer<FirebaseUser>() {
+            @Override
+            public void onChanged(FirebaseUser firebaseUser) {
+                if(firebaseUser != null){
+                    Intent intent = UsersActivity.newIntent(RegistrationActivity.this);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
     }
 
     @NonNull
