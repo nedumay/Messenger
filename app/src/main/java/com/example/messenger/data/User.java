@@ -15,6 +15,10 @@ public class User {
         this.isOnline = isOnline;
     }
 
+    // при работе с Firebase для получения данных необходимо использовать пустой конструктор
+    public User() {
+    }
+
     public String getId() {
         return id;
     }

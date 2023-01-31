@@ -14,4 +14,5 @@
     <string name="sing_up">Sing up</string>
     <string name="reset_password">Reset password</string>
     <string name="logout">Logout</string>
+    <string name="type_your_message">Type your message:</string>
 </resources>
