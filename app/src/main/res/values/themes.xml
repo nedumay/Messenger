@@ -17,8 +17,8 @@
 
     <style name="Theme.Wave" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/background_activity</item>
-        <item name="colorPrimaryVariant">@color/background_activity</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorPrimaryDark">@color/background_activity</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->

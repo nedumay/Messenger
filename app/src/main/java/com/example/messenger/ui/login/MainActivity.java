@@ -1,6 +1,7 @@
 package com.example.messenger.ui.login;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -8,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,16 +17,21 @@ import com.example.messenger.R;
 import com.example.messenger.ui.registration.RegistrationActivity;
 import com.example.messenger.ui.reset.ResetPasswordActivity;
 import com.example.messenger.ui.users.UsersActivity;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView textViewForgotPassword;
-    private TextView textViewRegistration;
+    private CardView cardViewRegistration;
+
+    private TextInputLayout tilEmail;
     private EditText editTextEmail;
+
+    private TextInputLayout tilPassword;
     private EditText editTextPassword;
-    private Button loginButton;
+    private CardView loginButton;
 
     private MainViewModel mainViewModel;
 
@@ -61,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //launch intent to registration screen
-        textViewRegistration.setOnClickListener(new View.OnClickListener() {
+        cardViewRegistration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = RegistrationActivity.newIntent(MainActivity.this);
@@ -93,10 +98,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         textViewForgotPassword = findViewById(R.id.textViewForgotPassword);
-        textViewRegistration = findViewById(R.id.textViewRegister);
+        cardViewRegistration = findViewById(R.id.registrationViewBtn);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
-        loginButton = findViewById(R.id.buttonLogin);
+        loginButton = findViewById(R.id.loginViewBtn);
     }
 
     public static Intent newIntent(Context context){

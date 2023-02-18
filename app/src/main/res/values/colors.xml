@@ -8,5 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background_activity">#0D0B1E</color>
+    <color name="background_card_view">#7E5E5D73</color>
     <color name="text_color">#874570</color>
+    <color name="text_color_hint">#5E5D73</color>
 </resources>

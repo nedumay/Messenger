@@ -33,13 +33,11 @@
         <activity
             android:name=".ui.reset.ResetPasswordActivity"
             android:exported="false"
-            android:theme="@style/Theme.Wave"
-            android:windowSoftInputMode="adjustResize" />
+            android:theme="@style/Theme.Wave" />
         <activity
             android:name=".ui.registration.RegistrationActivity"
             android:exported="false"
-            android:theme="@style/Theme.Wave"
-            android:windowSoftInputMode="adjustResize" />
+            android:theme="@style/Theme.Wave"/>
         <activity
             android:name=".ui.login.MainActivity"
             android:exported="false"
