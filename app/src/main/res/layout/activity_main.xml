@@ -4,30 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_activity"
+    android:background="@drawable/main_background"
     tools:context=".ui.login.MainActivity">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/back_wave_main"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewEdit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="120dp"
         android:layout_marginEnd="48dp"
-        app:cardBackgroundColor="@color/background_card_view"
-        app:cardCornerRadius="24dp"
+        style="@style/card_view_glass"
+        app:layout_constraintBottom_toTopOf="@+id/registrationViewBtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -39,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:text="Account Login"
+                android:text="@string/account_login"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="@+id/til_email"
@@ -53,11 +46,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
-                android:textColorHint="@color/text_color_hint"
-                app:boxCornerRadiusBottomEnd="24dp"
-                app:boxCornerRadiusBottomStart="24dp"
-                app:boxCornerRadiusTopEnd="24dp"
-                app:boxCornerRadiusTopStart="24dp"
+                style="@style/text_input_layout_email"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textLogin">
@@ -66,10 +55,9 @@
                     android:id="@+id/editTextEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:backgroundTint="@color/black"
                     android:hint="@string/your_email"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -79,11 +67,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
-                android:textColorHint="@color/text_color_hint"
-                app:boxCornerRadiusBottomEnd="24dp"
-                app:boxCornerRadiusBottomStart="24dp"
-                app:boxCornerRadiusTopEnd="24dp"
-                app:boxCornerRadiusTopStart="24dp"
+                style="@style/text_input_layout_password"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/til_email">
@@ -92,10 +76,9 @@
                     android:id="@+id/editTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:backgroundTint="@color/black"
                     android:hint="@string/your_password"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.cardview.widget.CardView
@@ -103,9 +86,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                app:cardBackgroundColor="@color/background_activity"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="2dp"
+                style="@style/card_view_btn"
                 app:layout_constraintEnd_toEndOf="@+id/til_password"
                 app:layout_constraintStart_toStartOf="@+id/til_password"
                 app:layout_constraintTop_toBottomOf="@+id/til_password">
@@ -121,12 +102,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gothic_a1"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
+                        style="@style/text_view_btn"
                         android:text="@string/login"
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="24sp" />
+                         />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -155,12 +133,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="48dp"
-        app:cardBackgroundColor="@color/background_activity"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="2dp"
+        style="@style/card_view_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewEdit">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -173,12 +151,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gothic_a1"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
+                style="@style/text_view_btn"
                 android:text="@string/registration"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
+                 />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

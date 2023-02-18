@@ -19,4 +19,7 @@
     <string name="offline">Offline</string>
     <string name="already_have_an_account">Already have an account?</string>
     <string name="join_now">Join Now</string>
+    <string name="welcome">Welcome !</string>
+    <string name="let_s_start">Let`s start!</string>
+    <string name="account_login">Account Login</string>
 </resources>
