@@ -7,27 +7,60 @@
     android:background="#F6F6F6"
     tools:context=".ui.chat.ChatActivity">
 
-    <TextView
-        android:id="@+id/textViewTitle"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:background="@android:color/holo_purple"
-        android:padding="16dp"
-        tools:text="Name LastName"/>
-
-    <View
-        android:id="@+id/viewIsOnline"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_margin="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewTitle"
+        android:background="@android:color/system_accent3_800"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textViewTitle"
-        tools:background="@drawable/circle_red" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="s">
+
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:src="@drawable/baseline_arrow_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/back_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Name LastName" />
+
+        <View
+            android:id="@+id/viewIsOnline"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewOnline"
+            app:layout_constraintStart_toEndOf="@+id/back_btn"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+            tools:background="@drawable/circle_red" />
+
+        <TextView
+            android:id="@+id/textViewOnline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:textColor="#ACAAAA"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/textViewTitle"
+            app:layout_constraintStart_toEndOf="@+id/viewIsOnline"
+            app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+            tools:text="Offline" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewChat"
@@ -35,7 +68,7 @@
         android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/editTextMessage"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar"
         tools:listitem="@layout/my_message_item" />
 
     <EditText
@@ -47,8 +80,8 @@
         android:inputType="textMultiLine"
         android:paddingStart="16dp"
         android:paddingTop="16dp"
-        android:paddingBottom="16dp"
         android:paddingEnd="48dp"
+        android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageView

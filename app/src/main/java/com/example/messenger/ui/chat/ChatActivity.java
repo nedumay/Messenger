@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.example.messenger.R;
 import com.example.messenger.data.Message;
 import com.example.messenger.data.User;
+import com.example.messenger.ui.users.UsersActivity;
 
 import java.util.List;
 
@@ -31,11 +32,13 @@ public class ChatActivity extends AppCompatActivity {
     private static final String EXTRA_OTHER_USER_ID = "other_id";
 
     private TextView textViewTitle;
+
+    private TextView textViewOnline;
     private View viewIsOnline;
     private RecyclerView recyclerViewChat;
     private EditText editTextMessage;
     private ImageView imageViewSendMessage;
-
+    private ImageView imageBtnBack;
     private MessagesAdapter messagesAdapter;
 
     private String currentUserId;
@@ -67,6 +70,15 @@ public class ChatActivity extends AppCompatActivity {
                         otherUserId
                 );
                 chatViewModel.sendMessage(message);
+            }
+        });
+
+        imageBtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = UsersActivity.newIntent(ChatActivity.this, currentUserId);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -116,8 +128,10 @@ public class ChatActivity extends AppCompatActivity {
                 int bgResId;
                 if(user.isOnline()){
                     bgResId = R.drawable.circle_green;
+                    textViewOnline.setText(R.string.online);
                 } else {
                     bgResId = R.drawable.circle_red;
+                    textViewOnline.setText(R.string.offline);
                 }
                 Drawable background = ContextCompat.getDrawable(ChatActivity.this,bgResId);
                 viewIsOnline.setBackground(background);
@@ -126,7 +140,9 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        imageBtnBack = findViewById(R.id.back_btn);
         textViewTitle = findViewById(R.id.textViewTitle);
+        textViewOnline = findViewById(R.id.textViewOnline);
         viewIsOnline = findViewById(R.id.viewIsOnline);
         recyclerViewChat = findViewById(R.id.recyclerViewChat);
         editTextMessage = findViewById(R.id.editTextMessage);

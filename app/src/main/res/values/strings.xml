@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Messenger</string>
+    <string name="app_name">Wave</string>
     <string name="your_email">Your email:</string>
     <string name="your_password">Your password:</string>
     <string name="login">Login</string>
@@ -15,4 +15,6 @@
     <string name="reset_password">Reset password</string>
     <string name="logout">Logout</string>
     <string name="type_your_message">Type your message:</string>
+    <string name="online">Online</string>
+    <string name="offline">Offline</string>
 </resources>
