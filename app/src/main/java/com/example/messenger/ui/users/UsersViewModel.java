@@ -51,7 +51,7 @@ public class UsersViewModel extends ViewModel {
                 List<User> userFromdb = new ArrayList<>();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     User user = dataSnapshot.getValue(User.class);
-                    if (user.getId()==null){
+                    if (user == null){
                         return;
                     }
                     if(!user.getId().equals(currentUser.getUid())){
