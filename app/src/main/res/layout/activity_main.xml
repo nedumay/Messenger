@@ -96,15 +96,14 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/gradient_wave"
                     android:gravity="center"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:orientation="horizontal">
 
                     <TextView
+                        style="@style/text_view_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/gothic_a1"
-                        style="@style/text_view_btn"
-                        android:text="@string/login"
-                         />
+                        android:text="@string/login" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -114,10 +113,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginBottom="24dp"
-                android:padding="8dp"
+                android:padding="16dp"
+                style="@style/forgot_password"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:text="@string/forgot_password"
-                android:textColor="@color/text_color_hint"
-                android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/loginViewBtn"
                 app:layout_constraintStart_toStartOf="@+id/loginViewBtn"
@@ -145,6 +144,7 @@
             android:layout_height="match_parent"
             android:background="@drawable/gradient_wave"
             android:gravity="center"
+            android:foreground="?android:attr/selectableItemBackground"
             android:orientation="horizontal">
 
             <TextView

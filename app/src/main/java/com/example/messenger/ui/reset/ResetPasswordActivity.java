@@ -1,6 +1,7 @@
 package com.example.messenger.ui.reset;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -10,15 +11,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.messenger.R;
+import com.example.messenger.ui.login.MainActivity;
+import com.example.messenger.ui.start.StartActivity;
 
 public class ResetPasswordActivity extends AppCompatActivity {
 
     private static final String EXTRA_EMAIL = "email";
     private EditText editTextEmail;
-    private Button buttonResetPassword;
+    private CardView buttonResetPassword;
+
+    private LinearLayout backToLogin;
 
     private ResetPasswordViewModel resetPasswordViewModel;
 
@@ -40,9 +46,18 @@ public class ResetPasswordActivity extends AppCompatActivity {
             }
         });
 
+        backToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ResetPasswordActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void initView() {
+        backToLogin = findViewById(R.id.backToAccountLogin);
         editTextEmail = findViewById(R.id.editTextEmail);
         buttonResetPassword = findViewById(R.id.buttonReset);
     }

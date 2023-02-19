@@ -21,5 +21,8 @@
     <string name="join_now">Join Now</string>
     <string name="welcome">Welcome !</string>
     <string name="let_s_start">Let`s start!</string>
-    <string name="account_login">Account Login</string>
+    <string name="account_login">Account login</string>
+    <string name="enter_your_first_name">Enter your first name</string>
+    <string name="enter_your_last_name">Enter your last name</string>
+    <string name="enter_your_age">Enter your age</string>
 </resources>
