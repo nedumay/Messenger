@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:background="@drawable/gradient_wave"
         android:orientation="horizontal">
 
         <TextView
@@ -20,7 +21,7 @@
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:padding="16dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             tools:text="Oleg Ivanov, 41"/>
 
         <View

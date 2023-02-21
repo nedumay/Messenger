@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import com.example.messenger.R;
 import com.example.messenger.data.User;
+import com.example.messenger.databinding.ActivityUsersBinding;
 import com.example.messenger.ui.chat.ChatActivity;
 import com.example.messenger.ui.login.MainActivity;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,19 +25,21 @@ import java.util.List;
 
 public class UsersActivity extends AppCompatActivity {
 
+    private ActivityUsersBinding binding;
     private UsersViewModel usersViewModel;
     private UserRVAdapter usersAdapter;
-    private RecyclerView recyclerViewUser;
-
     private static final String EXTRA_CURRENT_USER_ID = "current_id";
     private String currentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_users);
+        binding = ActivityUsersBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        initViews();
+        usersAdapter = new UserRVAdapter();
+        binding.recyclerViewUsers.setAdapter(usersAdapter);
+
         currentUserId = getIntent().getStringExtra(EXTRA_CURRENT_USER_ID);
         usersViewModel = new ViewModelProvider(this).get(UsersViewModel.class);
         observeViewModel();
@@ -61,13 +64,13 @@ public class UsersActivity extends AppCompatActivity {
         usersViewModel.setUserOnline(false);
     }
 
-    private void initViews() {
-        recyclerViewUser = findViewById(R.id.recyclerViewUsers);
-        usersAdapter = new UserRVAdapter();
-        recyclerViewUser.setAdapter(usersAdapter);
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        usersViewModel.setUserOnline(false);
     }
 
-    public static Intent newIntent(Context context,String currentUserId){
+    public static Intent newIntent(Context context, String currentUserId){
         Intent intent = new Intent(context, UsersActivity.class);
         intent.putExtra(EXTRA_CURRENT_USER_ID,currentUserId);
         return intent;

@@ -50,7 +50,7 @@
         app:layout_constraintStart_toStartOf="@+id/linearLayout" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/joinViewBtn"
+        android:id="@+id/joinNowViewBtn"
         style="@style/card_view_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,9 +84,9 @@
         android:layout_marginBottom="16dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/joinViewBtn"
-        app:layout_constraintEnd_toEndOf="@+id/joinViewBtn"
-        app:layout_constraintStart_toStartOf="@+id/joinViewBtn">
+        app:layout_constraintBottom_toTopOf="@+id/joinNowViewBtn"
+        app:layout_constraintEnd_toEndOf="@+id/joinNowViewBtn"
+        app:layout_constraintStart_toStartOf="@+id/joinNowViewBtn">
 
         <TextView
             android:layout_width="wrap_content"

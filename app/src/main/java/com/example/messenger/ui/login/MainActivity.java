@@ -1,72 +1,59 @@
 package com.example.messenger.ui.login;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.messenger.R;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.messenger.databinding.ActivityMainBinding;
 import com.example.messenger.ui.registration.RegistrationActivity;
 import com.example.messenger.ui.reset.ResetPasswordActivity;
 import com.example.messenger.ui.users.UsersActivity;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseUser;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textViewForgotPassword;
-    private CardView cardViewRegistration;
-
-    private TextInputLayout tilEmail;
-    private EditText editTextEmail;
-
-    private TextInputLayout tilPassword;
-    private EditText editTextPassword;
-    private CardView loginButton;
-
+    private ActivityMainBinding binding;
     private MainViewModel mainViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        initView();
         mainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         observeViewModel();
         setupClickListener();
     }
 
     private void setupClickListener() {
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        binding.loginViewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = editTextEmail.getText().toString().trim();
-                String password = editTextPassword.getText().toString().trim();
+                String email = binding.editTextEmail.getText().toString().trim();
+                String password = binding.editTextPassword.getText().toString().trim();
                 mainViewModel.login(email, password);
             }
         });
         //launch intent to forgot password screen
-        textViewForgotPassword.setOnClickListener(new View.OnClickListener() {
+        binding.textViewForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = ResetPasswordActivity.newIntent(
-                        MainActivity.this, editTextEmail.getText().toString().trim()
+                        MainActivity.this, binding.editTextEmail.getText().toString().trim()
                 );
                 startActivity(intent);
             }
         });
         //launch intent to registration screen
-        cardViewRegistration.setOnClickListener(new View.OnClickListener() {
+        binding.registrationViewBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = RegistrationActivity.newIntent(MainActivity.this);
@@ -96,15 +83,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void initView() {
-        textViewForgotPassword = findViewById(R.id.textViewForgotPassword);
-        cardViewRegistration = findViewById(R.id.registrationViewBtn);
-        editTextEmail = findViewById(R.id.editTextEmail);
-        editTextPassword = findViewById(R.id.editTextPassword);
-        loginButton = findViewById(R.id.loginViewBtn);
-    }
-
-    public static Intent newIntent(Context context){
+    public static Intent newIntent(Context context) {
         return new Intent(context, MainActivity.class);
     }
 
